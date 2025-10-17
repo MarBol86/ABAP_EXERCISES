@@ -1,0 +1,21 @@
+CLASS zcl_lab_54_bank DEFINITION
+  PUBLIC FINAL CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    METHODS transfer IMPORTING iv_iban TYPE string
+                     RAISING   RESUMABLE(zCX_LAB_55_AUTH_IBAN_mb).
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zcl_lab_54_bank IMPLEMENTATION.
+  METHOD transfer.
+    IF iv_iban EQ 'ES95 4329 8765 4321'.
+      RAISE RESUMABLE EXCEPTION TYPE zCX_LAB_55_AUTH_IBAN_mb
+        EXPORTING
+          textid  = zCX_LAB_55_AUTH_IBAN_mb=>no_transfer
+          iv_msg1 = |{ iv_iban }|.
+    ENDIF.
+  ENDMETHOD.
+
+ENDCLASS.
