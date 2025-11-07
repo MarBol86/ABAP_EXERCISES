@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition'
+define service ZSD_CUSTOM_DETAIL_MB {
+  expose ZCDS_CUSTOM_DETAIL_MB as Customer_MB;
+}
